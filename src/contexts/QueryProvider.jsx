@@ -6,24 +6,34 @@ const QueryContext = React.createContext({});
 const QueryProvider = ({
   children,
 }) => {
-  const isDevelopment = () => process.env.NODE_ENV === 'development';
+  const isDevelopment = () => process.env.NODE_ENV === 'production';
 
   const axiosInstance = axios.create({
-    baseURL: `${process.env.REACT_APP_API_URL}${isDevelopment ? '/test' : ''}`,
+    baseURL: `${process.env.REACT_APP_API_URL}${isDevelopment() ? '/api/test' : ''}`,
   });
 
-  const getAll = () => new Promise(async (resolve) => {
+  const getInvestments = () => new Promise(async (resolve) => {
     try {
-      const resp = await axiosInstance.get('/all');
+      const resp = await axiosInstance.get('/oportunity/allGrouped');
       resolve(resp.data);
     } catch (err) {
-      resolve({});
+      resolve([]);
+    }
+  });
+
+  const login = (form) => new Promise(async (resolve, reject) => {
+    try {
+      const resp = await axiosInstance.post('/auth/login', form);
+      resolve(resp.data);
+    } catch (err) {
+      reject(new Error('Login error'));
     }
   });
 
   return (
     <QueryContext.Provider value={{
-      getAll,
+      getInvestments,
+      login,
     }}
     >
       {children}

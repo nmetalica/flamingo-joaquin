@@ -35,7 +35,8 @@ const Profile = () => {
           Usuario:
         </Subheading>
         <div className="text-black-400">
-          {user.username}
+          {/* {user.username} */}
+          Test
         </div>
       </div>
       <div className="w-full flex space-x-2 mb-3 items-center">
@@ -43,7 +44,8 @@ const Profile = () => {
           Email:
         </Subheading>
         <div className="text-black-400">
-          {user.email}
+          {/* {user.email} */}
+          test@test.com
         </div>
       </div>
       <div className="w-full flex space-x-2 mb-3 items-center">
@@ -51,7 +53,8 @@ const Profile = () => {
           Teléfono:
         </Subheading>
         <div className="text-black-400">
-          {user.phone}
+          {/* {user.phone} */}
+          111 111 111
         </div>
       </div>
     </div>

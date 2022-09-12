@@ -25,11 +25,11 @@ const InvestmentsFilter = ({
       options: [
         {
           key: 'A',
-          optionLabel: 'A',
+          optionLabel: 'Tipo 1',
         },
         {
           key: 'B',
-          optionLabel: 'B',
+          optionLabel: 'Tipo 2',
         },
       ],
     },
@@ -39,11 +39,11 @@ const InvestmentsFilter = ({
       options: [
         {
           key: 'C',
-          optionLabel: 'C',
+          optionLabel: 'Sector 1',
         },
         {
           key: 'D',
-          optionLabel: 'D',
+          optionLabel: 'Sector 2',
         },
       ],
     },
@@ -53,11 +53,11 @@ const InvestmentsFilter = ({
       options: [
         {
           key: 'E',
-          optionLabel: 'E',
+          optionLabel: 'Tech 1',
         },
         {
           key: 'F',
-          optionLabel: 'F',
+          optionLabel: 'Tech 2',
         },
       ],
     },
@@ -67,11 +67,11 @@ const InvestmentsFilter = ({
       options: [
         {
           key: 'G',
-          optionLabel: 'G',
+          optionLabel: 'Opción 1',
         },
         {
           key: 'H',
-          optionLabel: 'H',
+          optionLabel: 'Opción 2',
         },
       ],
     },

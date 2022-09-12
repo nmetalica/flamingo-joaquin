@@ -22,6 +22,12 @@ const Login = ({
     }
   };
 
+  document.addEventListener('keydown', (e) => {
+    if ((e.which === 13 || e.which === 'enter') && validateForm) {
+      onLogin({ username, password });
+    }
+  });
+
   return (
     <div className={className}>
       <Input className="w-80" label="Usuario: " onChange={updateUsername} value={username} placeholder="Nombre de usuario"/>
@@ -34,7 +40,7 @@ const Login = ({
         onClick={handleLogin}
       >
         <span className="mr-3">Entrar</span>
-        {loading && <Loader size="8" />}
+        {loading && <Loader size="8" className="stroke-white" />}
       </Button>
     </div>
   );

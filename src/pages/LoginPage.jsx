@@ -7,6 +7,7 @@ import { Heading, Subheading } from '../components/typography/Index';
 import Modal from '../components/app/Modal';
 import eventBus from '../hooks/Eventbus';
 import { AppContext } from '../contexts/AppProvider';
+import { QueryContext } from '../contexts/QueryProvider';
 
 const LoginPage = () => {
   const [showLogin, updateLogin] = useState(false);
@@ -14,11 +15,18 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const { login } = useContext(AppContext);
+  const { login } = useContext(QueryContext);
+  const { updateUser } = useContext(AppContext);
 
   const handleLogin = async (form) => {
     setLoading(true);
-    await login(form);
+    try {
+      const user = await login(form);
+      console.log(user);
+    } catch (err) {
+      setLoading(false);
+    }
+    updateUser({});
     navigate('/');
   };
 
@@ -30,7 +38,7 @@ const LoginPage = () => {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col mt-10 ml-20 relative">
+    <div className="w-full h-full flex flex-col pt-10 ml-20 relative">
       <Heading className="text-left">
         Conectando smart money
       </Heading>

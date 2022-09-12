@@ -22,19 +22,10 @@ const AppProvider = ({
     updateUser(null);
   };
 
-  const login = async (form) => {
-    console.log(form);
-    const loggedUser = { name: 'prueba', lastname: 'test' };
-    updateUser(loggedUser);
-    localStorage.setItem('userToken', JSON.stringify(loggedUser));
-    return Promise.resolve();
-  };
-
   return (
     <AppContext.Provider value={{
       user,
       updateUser,
-      login,
       logout,
     }}
     >

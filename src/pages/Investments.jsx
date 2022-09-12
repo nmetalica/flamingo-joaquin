@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { faHourglassHalf } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Heading, Subheading } from '../components/typography/Index';
 import InvestmentsFilter from '../components/investments/InvestmentsFilter';
 import Card from '../components/app/Card';
+import { QueryContext } from '../contexts/QueryProvider';
 
 const Investments = () => {
   const defaultInvestments = [
@@ -47,12 +48,16 @@ const Investments = () => {
     },
   ];
 
+  const { getInvestments } = useContext(QueryContext);
+
   const [investments, updateInvestments] = useState([]);
   const [fetchLoading, setFetchLoading] = useState(false);
 
-  const fetchInvestments = (filters) => {
+  const fetchInvestments = async (filters) => {
     console.log(filters);
     setFetchLoading(true);
+    const investmentsAPI = await getInvestments();
+    console.log(investmentsAPI);
     updateInvestments(defaultInvestments);
     setFetchLoading(false);
   };
