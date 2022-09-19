@@ -30,6 +30,12 @@ const Button = ({
 
   const SizeStyle = () => `text-${size}`;
 
+  const handleClick = () => {
+    if (!disabled) {
+      onClick();
+    }
+  };
+
   return (
     <div
       className={`
@@ -46,7 +52,7 @@ const Button = ({
         px-2
         transition-all
     `}
-      onClick={() => onClick()}
+      onClick={handleClick}
     >
       {children}
     </div>

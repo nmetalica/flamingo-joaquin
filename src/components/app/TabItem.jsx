@@ -17,10 +17,16 @@ const TabItem = ({
     return 'cursor-pointer border-transparent hover:border-black hover:text-black';
   };
 
+  const handleClick = () => {
+    if (!disabled) {
+      onClick();
+    }
+  };
+
   return (
     <div
       className={`font-bold text-lg px-4 py-1 border-b-4 hover:opacity-50 transition-all ${dynamicClasses()} ${className}`}
-      onClick={onClick}
+      onClick={handleClick}
     >
       {label}
     </div>

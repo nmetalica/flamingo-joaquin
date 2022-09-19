@@ -12,6 +12,7 @@ import Login from '../pages/LoginPage';
 import Profile from '../pages/Profile';
 import Header from '../components/app/Header';
 import Footer from '../components/app/Footer';
+import ShowInterest from '../pages/ShowInterest';
 
 const Router = () => {
   const { user } = useContext(AppContext);
@@ -35,6 +36,7 @@ const Router = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={AuthGuard(<Profile />)} />
+          <Route path="/show-interest" element={AuthGuard(<ShowInterest />)} />
           <Route path="/" element={AuthGuard(<Investments />)} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

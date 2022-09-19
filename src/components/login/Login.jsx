@@ -22,12 +22,6 @@ const Login = ({
     }
   };
 
-  document.addEventListener('keydown', (e) => {
-    if ((e.which === 13 || e.which === 'enter') && validateForm) {
-      onLogin({ username, password });
-    }
-  });
-
   return (
     <div className={className}>
       <Input className="w-80" label="Usuario: " onChange={updateUsername} value={username} placeholder="Nombre de usuario"/>

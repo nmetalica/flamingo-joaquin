@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { faHourglassHalf } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,23 +9,28 @@ import Card from '../components/app/Card';
 import { QueryContext } from '../contexts/QueryProvider';
 
 const Investments = () => {
+  const navigate = useNavigate();
+
   const defaultInvestments = [
     {
       investmentsType: 'Startups',
       cards: [
         {
+          id: 'kajd12o2',
           title: 'Chekin',
           description: 'Chekin automatiza el proceso "Check-in" a cualquier tipo de estancia vacacional incluyendo el pago de tasas turísticas y reporte a las autoridades locales.',
           location: 'Sevilla, España',
           tags: ['Onboarding'],
         },
         {
+          id: 'dasdasd2112',
           title: 'ONiAd',
           description: 'ONiAd permite crear campañas de marketing automáticas a través de una plataforma en más de 6 mil medios verificados (publicidad programática).',
           location: 'Zaragoza, España',
           tags: ['Publicidad'],
         },
         {
+          id: '9123undsai12',
           title: 'Coming soon...',
           description: 'Estamos buscando y analizando nuevas oportunidades para ofrecer a los miembros de Flamingo.',
           disabled: true,
@@ -35,12 +41,14 @@ const Investments = () => {
       investmentsType: 'Real Estate',
       cards: [
         {
+          id: '1023idskndsa',
           title: 'Propiedades Civitas',
           description: 'Prim 34 se encuentra en el centro de Badajoz, calle Prim, que conecta Puerta Palma con la calle Mayor, y la calle Gabriel. Cuenta con todos los equipamientos necesarios para hacerte la vida más fácil.',
           location: 'Badajoz, España',
           tags: ['New Development'],
         },
         {
+          id: '1023i90asjds',
           title: 'Coming soon...',
           description: 'Estamos buscando y analizando nuevas oportunidades para ofrecer a los miembros de Flamingo.',
         },
@@ -61,6 +69,8 @@ const Investments = () => {
     updateInvestments(defaultInvestments);
     setFetchLoading(false);
   };
+
+  const handleClick = (id) => navigate(`/show-interest?id=${id}`);
 
   return (
     <div className="h-full w-full overflow-hidden px-8 pt-8">
@@ -101,6 +111,7 @@ const Investments = () => {
             </Heading>
             <div className="flex space-x-6">
               {cards.map(({
+                id,
                 title,
                 description,
                 location,
@@ -108,7 +119,8 @@ const Investments = () => {
                 disabled,
               }) => (
                 <Card
-                  key={title}
+                  onClick={() => handleClick(id)}
+                  key={id}
                   disabled={disabled}
                   logo={(
                     <div className="w-full h-full text-primary bg-white rounded-lg p-4 border">

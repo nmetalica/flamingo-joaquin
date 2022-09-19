@@ -26,8 +26,14 @@ const Card = ({
     return 'cursor-pointer hover:shadow-xl';
   };
 
+  const handleClick = () => {
+    if (!disabled) {
+      onClick();
+    }
+  };
+
   return (
-    <Container className={`rounded-xl transition-all relative border border-black-200 ${dynamicClass()} ${className}`} onClick={onClick}>
+    <Container className={`rounded-xl transition-all relative border border-black-200 ${dynamicClass()} ${className}`} onClick={handleClick}>
       <div className="absolute top-[50%] left-2 w-16 h-16 mini-preview-translate">{logo}</div>
       <div className="h-[50%]">{preview}</div>
       <div className="h-[50%] space-y-2 pt-6 px-6">
