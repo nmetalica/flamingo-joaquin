@@ -6,7 +6,7 @@ import Loader from '../app/Loader';
 const Login = ({
   onLogin,
   loading,
-  className,
+  className = '',
 }) => {
   const [username, updateUsername] = useState('');
   const [password, updatePassword] = useState('');

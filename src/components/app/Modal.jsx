@@ -16,7 +16,7 @@ const Modal = ({
   onClose,
   header,
   children,
-  className,
+  className = '',
 }) => {
   if (!opened) {
     return null;
@@ -49,7 +49,7 @@ const Modal = ({
               size="lg"
               icon={faCircleXmark}
               onClick={closeModal}
-              className="absolute -top-1 -right-6 cursor-pointer text-primary-400 shadow-xl"
+              className="absolute -top-[0.5rem] -right-[0.9rem] cursor-pointer text-primary-400 shadow-xl"
             />
           </div>
           <div className="w-full">

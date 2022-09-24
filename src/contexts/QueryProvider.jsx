@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 const QueryContext = React.createContext({});
+const apiURL = 'http://flamingo-env.eba-agbr2inh.eu-west-2.elasticbeanstalk.com';
 
 const QueryProvider = ({
   children,
@@ -9,7 +10,7 @@ const QueryProvider = ({
   const isDevelopment = () => process.env.NODE_ENV === 'production';
 
   const axiosInstance = axios.create({
-    baseURL: `${process.env.REACT_APP_API_URL}${isDevelopment() ? '/api/test' : ''}`,
+    baseURL: `${apiURL}${isDevelopment() ? '/api/test' : ''}`,
   });
 
   const getInvestments = () => new Promise(async (resolve) => {

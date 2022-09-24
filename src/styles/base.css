@@ -20,28 +20,6 @@
   animation: 0.4s ease-out fadeOut 1;
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    visibility: hidden;
-  }
-  100% {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-@keyframes fadeOut {
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-  0% {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
@@ -67,6 +45,25 @@
   animation: dash 1.5s ease-in-out infinite;
 }
 
+.fade-appear,
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 450ms linear 250ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 150ms linear;
+}
+
+
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
@@ -85,5 +82,27 @@
   100% {
     stroke-dasharray: 90, 150;
     stroke-dashoffset: -124;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  0% {
+    opacity: 1;
+    visibility: visible;
   }
 }
