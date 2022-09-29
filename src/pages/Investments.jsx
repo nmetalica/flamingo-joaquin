@@ -11,62 +11,15 @@ import { QueryContext } from '../contexts/QueryProvider';
 const Investments = () => {
   const navigate = useNavigate();
 
-  const defaultInvestments = [
-    {
-      investmentsType: 'Startups',
-      cards: [
-        {
-          id: 'kajd12o2',
-          title: 'Chekin',
-          description: 'Chekin automatiza el proceso "Check-in" a cualquier tipo de estancia vacacional incluyendo el pago de tasas turísticas y reporte a las autoridades locales.',
-          location: 'Sevilla, España',
-          tags: ['Onboarding'],
-        },
-        {
-          id: 'dasdasd2112',
-          title: 'ONiAd',
-          description: 'ONiAd permite crear campañas de marketing automáticas a través de una plataforma en más de 6 mil medios verificados (publicidad programática).',
-          location: 'Zaragoza, España',
-          tags: ['Publicidad'],
-        },
-        {
-          id: '9123undsai12',
-          title: 'Coming soon...',
-          description: 'Estamos buscando y analizando nuevas oportunidades para ofrecer a los miembros de Flamingo.',
-          disabled: true,
-        },
-      ],
-    },
-    {
-      investmentsType: 'Real Estate',
-      cards: [
-        {
-          id: '1023idskndsa',
-          title: 'Propiedades Civitas',
-          description: 'Prim 34 se encuentra en el centro de Badajoz, calle Prim, que conecta Puerta Palma con la calle Mayor, y la calle Gabriel. Cuenta con todos los equipamientos necesarios para hacerte la vida más fácil.',
-          location: 'Badajoz, España',
-          tags: ['New Development'],
-        },
-        {
-          id: '1023i90asjds',
-          title: 'Coming soon...',
-          description: 'Estamos buscando y analizando nuevas oportunidades para ofrecer a los miembros de Flamingo.',
-        },
-      ],
-    },
-  ];
-
   const { getInvestments } = useContext(QueryContext);
 
   const [investments, updateInvestments] = useState([]);
   const [fetchLoading, setFetchLoading] = useState(false);
 
   const fetchInvestments = async (filters) => {
-    console.log(filters);
     setFetchLoading(true);
-    const investmentsAPI = await getInvestments();
-    console.log(investmentsAPI);
-    updateInvestments(defaultInvestments);
+    const investmentsAPI = await getInvestments(filters);
+    updateInvestments(investmentsAPI);
     setFetchLoading(false);
   };
 
@@ -104,13 +57,14 @@ const Investments = () => {
             />
           </>
         )}
-        {!fetchLoading && investments.map(({ investmentsType, cards }) => (
-          <div key={investmentsType} className="my-4">
+        {!fetchLoading && investments.map(({ name, oportunities }) => (
+          <div key={name} className="my-4">
             <Heading className="mb-4">
-              {investmentsType}
+              {name}
             </Heading>
             <div className="flex space-x-6">
-              {cards.map(({
+              {!oportunities.length && <Subheading className="text-black-400">No hay resultados disponibles</Subheading>}
+              {oportunities.map(({
                 id,
                 title,
                 description,

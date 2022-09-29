@@ -2,20 +2,18 @@ import React from 'react';
 import axios from 'axios';
 
 const QueryContext = React.createContext({});
-const apiURL = 'http://flamingo-env.eba-agbr2inh.eu-west-2.elasticbeanstalk.com';
 
 const QueryProvider = ({
   children,
 }) => {
-  const isDevelopment = () => process.env.NODE_ENV === 'production';
-
   const axiosInstance = axios.create({
-    baseURL: `${apiURL}${isDevelopment() ? '/api/test' : ''}`,
+    //baseURL: 'http://flamingo-env.eba-astgaf32.eu-west-1.elasticbeanstalk.com',
+    baseURL: 'http://localhost:5000',
   });
 
-  const getInvestments = () => new Promise(async (resolve) => {
+  const getInvestments = (filters) => new Promise(async (resolve) => {
     try {
-      const resp = await axiosInstance.get('/oportunity/allGrouped');
+      const resp = await axiosInstance.post('/oportunity/allGrouped', filters);
       resolve(resp.data);
     } catch (err) {
       resolve([]);
@@ -24,7 +22,7 @@ const QueryProvider = ({
 
   const login = (form) => new Promise(async (resolve, reject) => {
     try {
-      const resp = await axiosInstance.post('/auth/login', form);
+      const resp = await axiosInstance.post('/auth/signin', form);
       resolve(resp.data);
     } catch (err) {
       reject(new Error('Login error'));

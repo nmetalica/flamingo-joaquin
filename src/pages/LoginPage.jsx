@@ -1,35 +1,15 @@
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Login from '../components/login/Login';
+import React, { useState, useEffect } from 'react';
 import { Heading, Subheading } from '../components/typography/Index';
 import Modal from '../components/app/Modal';
 import eventBus from '../hooks/Eventbus';
-import { AppContext } from '../contexts/AppProvider';
-import { QueryContext } from '../contexts/QueryProvider';
 import background from '../assets/Flamingo_Background.svg';
+import Login from '../components/login/Login';
 
 const LoginPage = () => {
   const [showLogin, updateLogin] = useState(false);
   const [showModal, updateModal] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const { login } = useContext(QueryContext);
-  const { updateUser } = useContext(AppContext);
-
-  const handleLogin = async (form) => {
-    setLoading(true);
-    try {
-      const user = await login(form);
-      console.log(user);
-    } catch (err) {
-      setLoading(false);
-    }
-    updateUser({});
-    navigate('/');
-  };
 
   useEffect(() => {
     eventBus.on('initiateLogin', () => updateLogin(true));
@@ -90,7 +70,7 @@ const LoginPage = () => {
         )}
         {showLogin && (
           <div className="mt-[6rem] flex justify-center -ml-28">
-            <Login onLogin={handleLogin} loading={loading} />
+            <Login />
           </div>
         )}
       </div>

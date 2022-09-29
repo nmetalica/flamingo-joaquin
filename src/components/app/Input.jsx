@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const Input = ({
   value,
   onChange,
+  onFocus,
   placeholder,
   disabled,
   label = '',
@@ -46,6 +47,7 @@ const Input = ({
         className={`outline-none rounded-lg p-3 w-full resize-none ${rows === 1 ? 'overflow-hidden' : ''} ${bordered()}`}
         value={value}
         onChange={handleInput}
+        onFocus={onFocus}
         placeholder={placeholder}
         rows={rows}
         readOnly={disabled}
