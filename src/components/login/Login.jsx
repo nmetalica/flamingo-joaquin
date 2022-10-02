@@ -19,13 +19,13 @@ const Login = ({
   const { login } = useContext(QueryContext);
   const { updateUser } = useContext(AppContext);
 
-  const handleLogin = async (form) => {
+  const handleLogin = async () => {
     setLoading(true);
     try {
       updateError('');
-      const user = await login(form);
-      navigate('/');
+      const user = await login({ username, password });
       updateUser(user);
+      navigate('/');
     } catch (err) {
       setLoading(false);
       updateError('Usuario o contraseña incorrectos.');

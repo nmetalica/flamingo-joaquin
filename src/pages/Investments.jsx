@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { faHourglassHalf } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faHourglassHalf } from '@fortawesome/free-regular-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Heading, Subheading } from '../components/typography/Index';
 import InvestmentsFilter from '../components/investments/InvestmentsFilter';
 import Card from '../components/app/Card';
 import { QueryContext } from '../contexts/QueryProvider';
+import noPreview from '../assets/no-preview.png';
 
 const Investments = () => {
   const navigate = useNavigate();
@@ -66,8 +67,12 @@ const Investments = () => {
               {!oportunities.length && <Subheading className="text-black-400">No hay resultados disponibles</Subheading>}
               {oportunities.map(({
                 id,
+                image,
+                imageType,
+                logo,
+                logoType,
                 title,
-                description,
+                slogan,
                 location,
                 tags,
                 disabled,
@@ -77,19 +82,19 @@ const Investments = () => {
                   key={id}
                   disabled={disabled}
                   logo={(
-                    <div className="w-full h-full text-primary bg-white rounded-lg p-4 border">
-                      <FontAwesomeIcon icon={faHourglassHalf} className="h-full w-full"/>
+                    <div className="w-full h-full text-primary rounded-lg">
+                      <img alt="" src={logo ? `${logoType},${logo}` : noPreview} className="w-full h-full" />
                     </div>
                   )}
                   preview={(
-                    <div className="w-full h-full text-white bg-primary p-4 rounded-t-lg">
-                      <FontAwesomeIcon icon={faHourglassHalf} className="w-full h-full"/>
+                    <div className="w-full h-full text-white rounded-t-lg">
+                      <img alt="" src={image ? `${imageType},${image}` : noPreview} className="w-full h-full" />
                     </div>
                   )}
                   content={
                     (
                       <span className="multiline-ellipsis text-sm text-justify leading-4 text-black-400">
-                        {description}
+                        {slogan}
                       </span>
                     )
                   }

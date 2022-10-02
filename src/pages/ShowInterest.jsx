@@ -8,18 +8,23 @@ import OpportunityDetails from '../components/investments/OpportunityDetails';
 import SubmitInterest from '../components/investments/SubmitInterest';
 import Button from '../components/app/Button';
 import InvestmentDetail from '../components/investments/InvestmentDetail';
+import noPreview from '../assets/no-preview.png';
 
 const ShowInterest = () => {
   const [loading, updateLoading] = useState(true);
   const [interest, updateInterest] = useState(null);
   const [showInterest, updateShowInterest] = useState(false);
 
-  const defaultProfilePic = require('../assets/default-user-img.jpeg');
+  const fetchInvestment = async () => {
+    updateLoading(true);
+    // const res = await getInvestment()
+    updateInterest({});
+    updateLoading(false);
+  };
 
   useEffect(
     () => {
-      updateLoading(false);
-      updateInterest({});
+      fetchInvestment();
     },
     [],
   );
@@ -47,7 +52,7 @@ const ShowInterest = () => {
           <div className="w-[70%] w-full h-full pr-8">
             <div className="flex space-x-2 items-center">
               <div className="w-16 h-16">
-                <img src={interest.logo || defaultProfilePic} alt="" />
+                <img src={(interest.logo && `${interest.logoType},${interest.logo}`) || noPreview} alt="" className="w-full h-full" />
               </div>
               <Heading className="text-2xl">
                 {interest.title}

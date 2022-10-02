@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import TabItem from '../app/TabItem';
+import noPreview from '../../assets/no-preview.png';
 
 const InvestmentDetail = ({ cover, pitches = [] }) => {
   const [activeTab, updateActiveTab] = useState('pitch');
@@ -17,16 +18,14 @@ const InvestmentDetail = ({ cover, pitches = [] }) => {
     },
   ];
 
-  const defaultProfilePic = require('../../assets/default-user-img.jpeg');
-
   const StyledContainer = styled.div`
     height: calc(100% - 7rem);
   `;
 
   return (
-    <StyledContainer className="w-full">
+    <StyledContainer className="w-full mt-4">
       <div className="h-[50%]">
-        <img src={cover || defaultProfilePic} alt="" className="w-full max-h-[80%]" />
+        <img src={cover || noPreview} alt="" className="w-full max-h-[80%]" />
         <div className="w-full flex border-b border-black-200">
           {tabs.map(({ label, disabled, key }) => (
             <TabItem

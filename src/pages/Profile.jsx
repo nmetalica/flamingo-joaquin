@@ -114,6 +114,11 @@ const Profile = () => {
             }
           />
         ))}
+        { !interests.length && (
+          <Subheading className="w-full flex justify-center text-black-400 mt-5">
+            Aún no se han registrado muestras de interés.
+          </Subheading>
+        )}
       </div>
     </div>
   );
