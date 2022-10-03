@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../app/Button';
 import Input from '../app/Input';
 
-const SubmitInterest = () => {
+const SubmitInterest = ({ oportunity }) => {
   const [error, updateError] = useState('');
   const [form, updateForm] = useState({});
 
@@ -14,7 +14,7 @@ const SubmitInterest = () => {
   };
 
   const handleSubmit = () => {
-    console.log('submit', form);
+    console.log('submit', form, oportunity.id);
     navigate('/profile');
   };
   const validateNumber = /^[0-9]*$/;

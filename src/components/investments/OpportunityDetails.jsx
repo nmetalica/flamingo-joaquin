@@ -2,7 +2,7 @@ import React from 'react';
 import { Subheading } from '../typography/Index';
 
 const OpportunityDetails = () => {
-  console.log('deatail');
+  console.log('detail');
 
   return (
     <div className="w-[32rem]">

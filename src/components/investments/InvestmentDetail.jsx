@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import TabItem from '../app/TabItem';
 import noPreview from '../../assets/no-preview.png';
 
-const InvestmentDetail = ({ cover, pitches = [] }) => {
+const InvestmentDetail = ({ oportunity, pitches = [] }) => {
   const [activeTab, updateActiveTab] = useState('pitch');
 
   const tabs = [
@@ -25,7 +25,11 @@ const InvestmentDetail = ({ cover, pitches = [] }) => {
   return (
     <StyledContainer className="w-full mt-4">
       <div className="h-[50%]">
-        <img src={cover || noPreview} alt="" className="w-full max-h-[80%]" />
+        <img
+          className="w-full max-h-[80%]"
+          src={(oportunity && oportunity.image && `${oportunity.imageType},${oportunity.image}`) || noPreview}
+          alt=""
+        />
         <div className="w-full flex border-b border-black-200">
           {tabs.map(({ label, disabled, key }) => (
             <TabItem

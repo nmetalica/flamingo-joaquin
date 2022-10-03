@@ -7,8 +7,7 @@ const QueryProvider = ({
   children,
 }) => {
   const axiosInstance = axios.create({
-    //baseURL: 'http://flamingo-env.eba-astgaf32.eu-west-1.elasticbeanstalk.com',
-    baseURL: 'http://localhost:5000',
+    baseURL: 'http://flamingo-env.eba-astgaf32.eu-west-1.elasticbeanstalk.com',
   });
 
   const getInvestments = (filters) => new Promise(async (resolve) => {
@@ -17,6 +16,15 @@ const QueryProvider = ({
       resolve(resp.data);
     } catch (err) {
       resolve([]);
+    }
+  });
+
+  const getInvestment = (id) => new Promise(async (resolve) => {
+    try {
+      const resp = await axiosInstance.get(`/oportunity/${id}`);
+      resolve(resp.data);
+    } catch (err) {
+      resolve({});
     }
   });
 
@@ -32,6 +40,7 @@ const QueryProvider = ({
   return (
     <QueryContext.Provider value={{
       getInvestments,
+      getInvestment,
       login,
     }}
     >

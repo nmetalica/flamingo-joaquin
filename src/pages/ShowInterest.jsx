@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,22 +10,37 @@ import SubmitInterest from '../components/investments/SubmitInterest';
 import Button from '../components/app/Button';
 import InvestmentDetail from '../components/investments/InvestmentDetail';
 import noPreview from '../assets/no-preview.png';
+import { QueryContext } from '../contexts/QueryProvider';
 
 const ShowInterest = () => {
   const [loading, updateLoading] = useState(true);
   const [interest, updateInterest] = useState(null);
   const [showInterest, updateShowInterest] = useState(false);
+  const [investmentId, updateId] = useState(null);
+  const [searchParams] = useSearchParams();
+
+  const { getInvestment } = useContext(QueryContext);
 
   const fetchInvestment = async () => {
-    updateLoading(true);
-    // const res = await getInvestment()
-    updateInterest({});
+    if (!investmentId) {
+      return;
+    }
+    const res = await getInvestment(investmentId);
+    updateInterest(res);
     updateLoading(false);
   };
 
   useEffect(
     () => {
       fetchInvestment();
+    },
+    [investmentId],
+  );
+
+  useEffect(
+    () => {
+      updateLoading(true);
+      updateId(searchParams.get('id'));
     },
     [],
   );
@@ -45,27 +61,25 @@ const ShowInterest = () => {
   ];
 
   return (
-    <div className="flex p-6 h-full">
-      {loading && <Loader />}
+    <div className="flex p-6 h-full flex justify-center">
+      {loading && <Loader className="stroke-primary" size="14" />}
       {!loading && (
-        <>
+        <div className="flex">
           <div className="w-[70%] w-full h-full pr-8">
             <div className="flex space-x-2 items-center">
               <div className="w-16 h-16">
-                <img src={(interest.logo && `${interest.logoType},${interest.logo}`) || noPreview} alt="" className="w-full h-full" />
+                <img src={(interest.logo && `${interest.logoType},${interest.logo}`) || noPreview} alt="" className="w-full h-full rounded-lg border border-black-200" />
               </div>
               <Heading className="text-2xl">
                 {interest.title}
-                Checkin
               </Heading>
             </div>
             <Subheading className="text-black-600">
-              {interest.description}
-              Creando la experiencia check-in del futuro
+              {interest.slogan}
             </Subheading>
 
-            {showInterest && <SubmitInterest />}
-            {!showInterest && <InvestmentDetail pitches={pitches}/>}
+            {showInterest && <SubmitInterest oportunity={interest} />}
+            {!showInterest && <InvestmentDetail pitches={pitches} oportunity={interest} />}
 
           </div>
           <div className="w-[30%]">
@@ -78,7 +92,7 @@ const ShowInterest = () => {
             )}
             <OpportunityDetails />
           </div>
-        </>
+        </div>
       )}
     </div>
   );
