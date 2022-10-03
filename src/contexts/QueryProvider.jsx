@@ -7,7 +7,7 @@ const QueryProvider = ({
   children,
 }) => {
   const axiosInstance = axios.create({
-    baseURL: 'http://flamingo-env.eba-astgaf32.eu-west-1.elasticbeanstalk.com',
+    baseURL: 'https://flamingo.dev-emilio.com',
   });
 
   const getInvestments = (filters) => new Promise(async (resolve) => {
