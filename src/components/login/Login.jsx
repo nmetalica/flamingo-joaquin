@@ -17,14 +17,14 @@ const Login = ({
   const navigate = useNavigate();
 
   const { login } = useContext(QueryContext);
-  const { updateUser } = useContext(AppContext);
+  const { commitLogin } = useContext(AppContext);
 
   const handleLogin = async () => {
     setLoading(true);
     try {
       updateError('');
       const user = await login({ username, password });
-      updateUser(user);
+      commitLogin(user);
       navigate('/');
     } catch (err) {
       setLoading(false);

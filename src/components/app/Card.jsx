@@ -15,6 +15,7 @@ const Card = ({
 }) => {
   const Container = styled.div`
     height: 28rem;
+    min-width: 18rem;
     width: 20rem;
   `;
 

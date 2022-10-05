@@ -7,7 +7,7 @@ import './styles/base.css';
 const App = () => (
   <AppProvider>
     <QueryProvider>
-      <div className="h-screen w-screen overflow-hidden px-6">
+      <div className="h-screen w-screen xl:overflow-hidden px-6">
         <Router />
       </div>
     </QueryProvider>

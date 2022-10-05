@@ -20,7 +20,7 @@ const LoginPage = () => {
 
   return (
     <div className="relative">
-      <div className="w-full h-full flex flex-col pt-10 ml-20 relative z-[1]">
+      <div className="w-full h-full flex flex-col pt-10 xl:ml-20 relative z-[1]">
         <Heading className="text-left">
           Conectando smart money
         </Heading>
@@ -69,7 +69,7 @@ const LoginPage = () => {
           </>
         )}
         {showLogin && (
-          <div className="mt-[6rem] flex justify-center -ml-28">
+          <div className="mt-[6rem] flex justify-center xl:-ml-28">
             <Login />
           </div>
         )}

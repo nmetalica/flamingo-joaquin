@@ -1,13 +1,13 @@
 import React from 'react';
 
 const Heading = ({ children, className }) => (
-  <div className={`text-4xl font-bold ${className}`}>
+  <div className={`text-3xl xl:text-4xl font-bold ${className}`}>
     {children}
   </div>
 );
 
 const Subheading = ({ children, className }) => (
-  <div className={`text-xl font-bold ${className}`}>
+  <div className={`text-md xl:text-xl font-bold ${className}`}>
     {children}
   </div>
 );

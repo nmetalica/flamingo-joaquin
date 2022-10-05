@@ -17,6 +17,11 @@ const AppProvider = ({
     [],
   );
 
+  const commitLogin = (loggedUser) => {
+    localStorage.setItem('userToken', JSON.stringify(loggedUser));
+    updateUser(loggedUser);
+  };
+
   const logout = () => {
     localStorage.removeItem('userToken');
     updateUser(null);
@@ -25,7 +30,7 @@ const AppProvider = ({
   return (
     <AppContext.Provider value={{
       user,
-      updateUser,
+      commitLogin,
       logout,
     }}
     >

@@ -63,7 +63,7 @@ const Investments = () => {
             <Heading className="mb-4">
               {name}
             </Heading>
-            <div className="flex space-x-6">
+            <div className="flex space-x-6 overflow-x-auto">
               {!oportunities.length && <Subheading className="text-black-400">No hay resultados disponibles</Subheading>}
               {oportunities.map(({
                 id,
