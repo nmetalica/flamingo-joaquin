@@ -11,11 +11,11 @@ const InvestmentDetail = ({ oportunity, pitches = [] }) => {
       key: 'pitch',
       label: 'Pitch',
     },
-    {
-      key: 'updates',
-      label: 'Actualizaciones',
-      disabled: true,
-    },
+    // {
+    //   key: 'updates',
+    //   label: 'Actualizaciones',
+    //   disabled: true,
+    // },
   ];
 
   const StyledContainer = styled.div`
@@ -23,34 +23,35 @@ const InvestmentDetail = ({ oportunity, pitches = [] }) => {
   `;
 
   return (
-    <StyledContainer className="w-full mt-4">
-      <div className="h-[50%]">
+    <StyledContainer className="w-full mt-4 overflow-auto">
+      <div className="h-[70%] overflow-hidden">
         <img
-          className="w-full max-h-[80%]"
+          className="w-full max-h-[80%] bg-cover  max-h-[100%] h-auto object-center object-cover"
           src={(oportunity && oportunity.image && `${oportunity.imageType},${oportunity.image}`) || noPreview}
           alt=""
         />
-        <div className="w-full flex border-b border-black-200">
-          {tabs.map(({ label, disabled, key }) => (
-            <TabItem
-              key={key}
-              label={label}
-              active={key === activeTab}
-              onClick={() => updateActiveTab(key)}
-              disabled={disabled}
-            />
-          ))}
-        </div>
       </div>
-      <div className="h-[50%]">
-        <div className="overflow-auto flex-1 h-full">
+      <div className="w-full flex border-b border-black-200 mt-5 mb-5">
+        {tabs.map(({ label, disabled, key }) => (
+          <TabItem
+            key={key}
+            label={label}
+            active={key === activeTab}
+            onClick={() => updateActiveTab(key)}
+            disabled={disabled}
+          />
+        ))}
+      </div>
+      <div className="h-auto">
+        <div className="flex-1 h-full">
           {pitches.map(({ title, description }) => (
             <div className="mb-5" key={title}>
-              <div className="text-2xl font-bold">
+              <div className="text-xl lg:text-3xl text-black-600 font-extrabold py-3">
                 {title}
               </div>
-              <div className="text-black-600 text-justify">
+              <div className="text-base lg:text-xl text-black text-justify">
                 {description}
+                <hr className='mt-10 mx-20'></hr>
               </div>
             </div>
           ))}

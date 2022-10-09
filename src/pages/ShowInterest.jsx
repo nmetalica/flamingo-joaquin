@@ -4,13 +4,14 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Loader from '../components/app/Loader';
-import { Heading, Subheading } from '../components/typography/Index';
+import { BigTitle, BigSubtitle } from '../components/typography/Index';
 import OpportunityDetails from '../components/investments/OpportunityDetails';
 import SubmitInterest from '../components/investments/SubmitInterest';
 import Button from '../components/app/Button';
 import InvestmentDetail from '../components/investments/InvestmentDetail';
 import noPreview from '../assets/no-preview.png';
 import { QueryContext } from '../contexts/QueryProvider';
+import styled from 'styled-components';
 
 const ShowInterest = () => {
   const [loading, updateLoading] = useState(true);
@@ -45,6 +46,10 @@ const ShowInterest = () => {
     [],
   );
 
+  const StyledContainer = styled.div`
+  height: calc(100% - 7rem);
+`;
+
   const pitches = [
     {
       title: 'Resumen de la inversión',
@@ -58,40 +63,68 @@ const ShowInterest = () => {
       title: 'Solución y Producto',
       description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
     },
+    {
+      title: 'Proposición de Valor',
+      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+    },
+    {
+      title: 'Modelo de Negocio',
+      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+    },
+    {
+      title: 'Ventaja Competitiva',
+      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+    },
+    {
+      title: 'Factores Exponenciales',
+      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+    },
   ];
 
   return (
-    <div className="flex p-6 h-full flex justify-center">
+    <div className="flex pt-10 px-5 sm:p-10 h-[100%] flex justify-center max-w-screen-xl m-auto">
       {loading && <Loader className="stroke-primary" size="14" />}
       {!loading && (
-        <div className="flex">
-          <div className="w-[70%] w-full h-full pr-8">
+        <div className="flex-column sm:flex sm:flex-wrap">
+          <div className="w-[100%] mb-4">
             <div className="flex space-x-2 items-center">
-              <div className="w-16 h-16">
-                <img src={(interest.logo && `${interest.logoType},${interest.logo}`) || noPreview} alt="" className="w-full h-full rounded-lg border border-black-200" />
+              <div className="w-10 h-10 md:w-16 md:h-16">
+                <img src={(interest.logo && `${interest.logoType},${interest.logo}`) || noPreview} alt="" className="w-full h-full rounded-lg border border-black-200 cursor-pointer" onClick={() => updateShowInterest(false)}/>
               </div>
-              <Heading className="text-2xl">
+              <BigTitle>
                 {interest.title}
-              </Heading>
+              </BigTitle>
             </div>
-            <Subheading className="text-black-600">
+            <BigSubtitle className="text-black-600">
               {interest.slogan}
-            </Subheading>
-
+            </BigSubtitle>
+          </div>
+          <div className="hidden sm:flex h-[100%] w-[70%] pr-8">
             {showInterest && <SubmitInterest oportunity={interest} />}
             {!showInterest && <InvestmentDetail pitches={pitches} oportunity={interest} />}
-
           </div>
-          <div className="w-[30%]">
-            <div className="w-full flex justify-end space-x-5 mb-4">
-              <FontAwesomeIcon className="cursor-pointer text-black-400" icon={faStar} size="xl" />
-              <FontAwesomeIcon className="cursor-pointer text-black-400" icon={faArrowUpFromBracket} size="xl" />
-            </div>
+          <div className="hidden sm:block h-[100%] sm:w-[30%]">
+            <StyledContainer>
+              {/* <StyledContainer className="w-full flex justify-end space-x-5 mb-4">
+                <FontAwesomeIcon className="cursor-pointer text-black-400" icon={faStar} size="xl" />
+                <FontAwesomeIcon className="cursor-pointer text-black-400" icon={faArrowUpFromBracket} size="xl" />
+              </div> */}
+              {!showInterest && (
+                <Button className="bg-primary hover:bg-primary-200 border text-white border-primary hover:border-primary-200 font-bold w-[75%] mx-auto mt-5 mb-10" onClick={() => updateShowInterest(true)}>Mostrar interés</Button>
+              )}
+              <OpportunityDetails />
+            </StyledContainer>
+          </div>
+          <StyledContainer className="flex-column sm:hidden h-[100%] overflow-auto">
             {!showInterest && (
-              <Button type="primary" onClick={() => updateShowInterest(true)}>Mostrar interés</Button>
+              <div>
+                <OpportunityDetails />
+                <Button className="bg-primary hover:bg-primary-200 border text-white border-primary hover:border-primary-200 font-bold w-[75%] mx-auto mt-5 mb-10" onClick={() => updateShowInterest(true)}>Mostrar interés</Button>
+              </div>
             )}
-            <OpportunityDetails />
-          </div>
+            {showInterest && <SubmitInterest oportunity={interest} />}
+            {!showInterest && <InvestmentDetail pitches={pitches} oportunity={interest} />}
+          </StyledContainer>
         </div>
       )}
     </div>

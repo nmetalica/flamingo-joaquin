@@ -14,7 +14,7 @@ const Button = ({
     }
     switch (type) {
       case 'primary':
-        return 'bg-primary hover:bg-primary-200 border border-primary hover:border-primary-200';
+        return 'bg-primary hover:bg-primary-200 border text-white border-primary hover:border-primary-200 font-bold';
       case 'green':
         return 'bg-green hover:bg-green-200 border border-green hover:border-green-200';
       case 'purple':

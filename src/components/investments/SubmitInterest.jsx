@@ -38,20 +38,20 @@ const SubmitInterest = ({ oportunity }) => {
   );
 
   return (
-    <>
-      <div className="text-black-400 text-2xl mt-5 mb-1">
+    <div className='mx-auto sm:mt-5 max-h-[95%] sm:max-h-[75%] overflow-auto'>
+      <div className="text-black-400 text-lg md:text-2xl mt-5 mb-1">
         ¿Cuánto te gustaría invertir?
       </div>
       <Input
         placeholder="Cantidad tentativa"
         onChange={handleChange('amount')}
         value={form.amount}
-        className="w-1/2"
+        className="w-3/4 md:w-1/2"
         type="number"
         error={error}
       />
 
-      <div className="text-black-400 text-2xl mt-5 mb-1">
+      <div className="text-black-400 text-lg md:text-2xl mt-5 mb-1">
         ¿Qué valor podrías añadir a la inversión además del capital
       </div>
       <Input
@@ -59,11 +59,11 @@ const SubmitInterest = ({ oportunity }) => {
         rows={5}
         value={form.description}
         onChange={handleChange('description')}
-        className="w-[75%]"
+        className="w-[100%] md:w-[75%]"
       />
 
-      <Button onClick={handleSubmit} type="primary" className="w-[25rem] text-xl mt-6 text-white" disabled={!validateForm}>Mostrar interés</Button>
-    </>
+      <Button onClick={handleSubmit} type="primary" className="w-[50%] text-xl mx-auto mt-6 text-white" disabled={!validateForm}>Mostrar interés</Button>
+    </div>
   );
 };
 

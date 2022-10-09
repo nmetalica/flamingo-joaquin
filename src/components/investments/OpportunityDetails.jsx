@@ -5,34 +5,34 @@ const OpportunityDetails = () => {
   console.log('detail');
 
   return (
-    <div className="w-[32rem]">
+    <div className="m-auto sm:w-[90%] sm:h-[75%] overflow-hidden sm:overflow-auto flex-col">
       <div className="w-full xl:flex text-center xl:text-left justify-between mb-6 border-black-200 py-2 px-4 border-b">
-        <div className="text-black-400 text-xl"> Ronda </div>
-        <Subheading className="font-bold xl:text-right">Serie A</Subheading>
+        <div className="font-light text-black-400 text-base md:text-lg"> Ronda </div>
+        <div className="font-medium text-base md:text-lg xl:text-right">Serie A</div>
       </div>
       <div className="w-full xl:flex text-center xl:text-left justify-between mb-6 border-black-200 py-2 px-4 border-b">
-        <div className="text-black-400 text-xl">Tamaño</div>
-        <Subheading className="font-bold xl:text-right">€2M</Subheading>
+        <div className="font-light text-black-400 text-base md:text-lg">Tamaño</div>
+        <div className="font-medium text-base md:text-lg xl:text-right">€2M</div>
       </div>
       <div className="w-full xl:flex text-center xl:text-left justify-between mb-6 border-black-200 py-2 px-4 border-b">
-        <div className="text-black-400 text-xl">Instrumento</div>
-        <Subheading className="font-bold xl:text-right">Equity</Subheading>
+        <div className="font-light text-black-400 text-base md:text-lg">Instrumento</div>
+        <div className="font-medium text-base md:text-lg xl:text-right">Equity</div>
       </div>
       <div className="w-full xl:flex text-center xl:text-left justify-between mb-6 border-black-200 py-2 px-4 border-b">
-        <div className="text-black-400 text-xl">Valoración</div>
-        <Subheading className="font-bold xl:text-right">€10M pre-money</Subheading>
+        <div className="font-light text-black-400 text-base md:text-lg">Valoración</div>
+        <div className="font-medium text-base md:text-lg xl:text-right">€10M pre-money</div>
       </div>
       <div className="w-full xl:flex text-center xl:text-left justify-between mb-6 border-black-200 py-2 px-4 border-b">
-        <div className="text-black-400 text-xl">Cierre</div>
-        <Subheading className="font-bold xl:text-right">12/09/2022</Subheading>
+        <div className="font-light text-black-400 text-base md:text-lg">Cierre</div>
+        <div className="font-medium text-base md:text-lg xl:text-right">12/09/2022</div>
       </div>
       <div className="w-full xl:flex text-center xl:text-left justify-between mb-6 border-black-200 py-2 px-4 border-b">
-        <div className="text-black-400 text-xl">Co-inversiones</div>
-        <Subheading className="font-bold xl:text-right">JME Ventures, Sabadell Ventures</Subheading>
+        <div className="font-light text-black-400 text-base md:text-lg">Co-inversiones</div>
+        <div className="font-medium text-base md:text-lg xl:text-right">JME Ventures</div>
       </div>
       <div className="w-full xl:flex text-center xl:text-left justify-between mb-6 border-black-200 py-2 px-4 border-b">
-        <div className="text-black-400 text-xl">País</div>
-        <Subheading className="font-bold xl:text-right">España</Subheading>
+        <div className="font-light text-black-400 text-base md:text-lg">País</div>
+        <div className="font-medium text-base md:text-lg xl:text-right">España</div>
       </div>
     </div>
   );

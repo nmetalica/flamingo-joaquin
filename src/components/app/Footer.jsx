@@ -6,7 +6,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="h-14 bg-primary flex text-white w-screen -ml-6 items-center justify-between">
+    <div className="h-14 bg-primary flex text-white w-screen -ml-1 sm:-ml-6 items-center justify-between">
       <div />
       <div className="justify-self-center">
         Flamingo investing
