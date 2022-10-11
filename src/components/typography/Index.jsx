@@ -1,19 +1,19 @@
 import React from 'react';
 
 const Heading = ({ children, className }) => (
-  <div className={`text-3xl md:text-6xl font-extrabold ${className}`}>
+  <div className={`text-3xl md:text-5xl font-extrabold ${className}`}>
     {children}
   </div>
 );
 
 const Subheading = ({ children, className }) => (
-  <div className={`text-md md:text-2xl font-base ${className}`}>
+  <div className={`text-md md:text-xl font-base ${className}`}>
     {children}
   </div>
 );
 
 const BigTitle = ({ children, className }) => (
-  <div className={`text-2xl md:text-5xl font-extrabold ${className}`}>
+  <div className={`text-2xl md:text-4xl font-extrabold ${className}`}>
     {children}
   </div>
 );

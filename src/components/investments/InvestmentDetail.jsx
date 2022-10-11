@@ -26,7 +26,7 @@ const InvestmentDetail = ({ oportunity, pitches = [] }) => {
     <StyledContainer className="w-full mt-4 overflow-auto">
       <div className="h-[70%] overflow-hidden">
         <img
-          className="w-full max-h-[80%] bg-cover  max-h-[100%] h-auto object-center object-cover"
+          className="w-full max-h-[100%] bg-cover h-auto object-center object-cover"
           src={(oportunity && oportunity.image && `${oportunity.imageType},${oportunity.image}`) || noPreview}
           alt=""
         />
@@ -42,16 +42,32 @@ const InvestmentDetail = ({ oportunity, pitches = [] }) => {
           />
         ))}
       </div>
-      <div className="h-auto">
+      <div className="h-auto px-3">
         <div className="flex-1 h-full">
+          {/* ///////////////////////// */}
+          <div className="mb-5" key="Resumen de la inversion">
+            <div className="text-xl lg:text-2xl text-black-600 font-extrabold py-3">
+              Resúmen de la inversión
+            </div>
+            <hr className='mt-2 mb-8 mr-[90%]'></hr>
+            <div className="mb-10 text-base lg:text-lg text-black text-left">
+              <div className='list-disc'>
+                <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+                <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+                <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+                <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+              </div>
+            </div>
+          </div>
+          {/* ///////////////////////// */}
           {pitches.map(({ title, description }) => (
             <div className="mb-5" key={title}>
-              <div className="text-xl lg:text-3xl text-black-600 font-extrabold py-3">
+              <div className="text-xl lg:text-2xl text-black-600 font-extrabold py-3">
                 {title}
               </div>
-              <div className="text-base lg:text-xl text-black text-justify">
+              <hr className='mt-2 mb-8 mr-[90%]'></hr>
+              <div className="mb-10 text-base lg:text-lg text-black text-left">
                 {description}
-                <hr className='mt-10 mx-20'></hr>
               </div>
             </div>
           ))}

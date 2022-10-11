@@ -38,8 +38,8 @@ const SubmitInterest = ({ oportunity }) => {
   );
 
   return (
-    <div className='mx-auto sm:mt-5 max-h-[95%] sm:max-h-[75%] overflow-auto'>
-      <div className="text-black-400 text-lg md:text-2xl mt-5 mb-1">
+    <div className='mx-auto sm:ml-10 sm:mt-5 max-h-[95%] sm:max-h-[75%] overflow-auto'>
+      <div className="text-black-400 text-lg md:text-xl mt-5 mb-1">
         ¿Cuánto te gustaría invertir?
       </div>
       <Input
@@ -51,7 +51,7 @@ const SubmitInterest = ({ oportunity }) => {
         error={error}
       />
 
-      <div className="text-black-400 text-lg md:text-2xl mt-5 mb-1">
+      <div className="text-black-400 text-lg md:text-xl mt-5 mb-1">
         ¿Qué valor podrías añadir a la inversión además del capital
       </div>
       <Input
