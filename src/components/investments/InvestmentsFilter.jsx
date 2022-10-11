@@ -110,7 +110,7 @@ const InvestmentsFilter = ({
   `;
 
   return (
-    <>
+    <div className='hidden'>
       <Button
         className={`${showFilters && 'bg-black-300 text-black'} flex space-x-2 w-12 block xl:hidden relative`}
         onClick={() => updateFiltersVisibility(!showFilters)}
@@ -137,7 +137,7 @@ const InvestmentsFilter = ({
           </div>
         </FiltersContainer>
       )}
-    </>
+    </div>
   );
 };
 

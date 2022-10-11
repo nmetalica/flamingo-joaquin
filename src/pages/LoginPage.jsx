@@ -19,19 +19,21 @@ const LoginPage = () => {
   }, []);
 
   return (
-    <div className="relative">
-      <div className="w-full h-full flex flex-col pt-10 xl:ml-20 relative z-[1]">
-        <Heading className="text-left">
-          Conectando smart money
-        </Heading>
-        <Heading className="text-left">
-          con oportunidades únicas
+    <div className="relative px-6 sm:px-0 h-[100%] w-[100%] flex-col md:flex">
+      <div className="hidden sm:flex md:absolute top-0 left-0 z-[0] w-full h-auto lg:h-full opacity-25">
+        <img src={background} alt="" className="w-[100%] max-h-[100%] h-auto md:bottom-0"/>
+      </div>
+      <div className="flex-col pt-10 xl:ml-20 relative z-[1]">
+        <Heading className="flex text-left lg:max-w-[80%] 2xl:max-w-[60%]">
+          Conectando smart money con oportunidades únicas
         </Heading>
         {!showLogin && (
-          <>
+          <div>
+            {/* <Heading className="flex sm:hidden text-left lg:max-w-[80%] 2xl:max-w-[60%]">
+              Conectando smart money con oportunidades únicas
+            </Heading> */}
             <div className="text-black-400 mt-10">
-              <Subheading>Descubre y co-invierte en oportunidades</Subheading>
-              <Subheading>basadas en la actividad de tus socios</Subheading>
+              <Subheading className="md:max-w-[80%] 2xl:max-w-[60%]">Descubre y co-invierte en oportunidades basadas en la actividad de tus socios</Subheading>
             </div>
             <div className="mt-10">
               <div className="cursor-pointer font-bold flex items-center" onClick={() => !showModal && updateModal(true)}>
@@ -66,17 +68,20 @@ const LoginPage = () => {
                 </Modal>
               </div>
             </div>
-          </>
+            <div className="flex sm:hidden md:absolute top-0 left-0 z-[0] w-full h-auto lg:h-full opacity-25">
+             <img src={background} alt="" className="w-[100%] max-h-[100%] h-auto md:bottom-0"/>
+            </div>
+          </div>
         )}
         {showLogin && (
-          <div className="mt-[6rem] flex justify-center xl:-ml-28">
+          <div className="max-h-[100%] pt-4 md:pt-0 lg:mt-6 flex justify-center xl:-ml-28">
             <Login />
           </div>
         )}
       </div>
-      <div className="absolute top-0 left-0 z-[0] w-screen h-screen opacity-25">
-        <img src={background} alt="" className="w-full h-full"/>
-      </div>
+      {/* <div className="absolute top-0 left-0 z-[0] w-full h-full opacity-25">
+        <img src={background} alt="" className="w-[100%] max-h-[100%] h-auto"/>
+      </div> */}
     </div>
   );
 };

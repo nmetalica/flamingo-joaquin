@@ -38,7 +38,7 @@ const Card = ({
       <div className="absolute top-[50%] left-2 w-16 h-16 mini-preview-translate">{logo}</div>
       <div className="h-[50%]">{preview}</div>
       <div className="h-[50%] space-y-2 pt-6 px-6">
-        <Subheading className="h-[18%]">{title}</Subheading>
+        <div className="h-[18%] text-2xl md:text-3xl font-extrabold">{title}</div>
         <div className="h-[50%]">{content}</div>
         <div className="h-[20%]">{footer}</div>
       </div>

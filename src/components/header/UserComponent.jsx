@@ -20,7 +20,7 @@ const UserComponent = () => {
   return (
     <div>
       {!user && (
-        <Button type="primary" className="w-32 h-10 font-bold" onClick={login}>
+        <Button className="w-32 h-10 text-primary hover:bg-primary hover:text-white hover:font-bold border-none" onClick={login}>
           Entrar
         </Button>
       )}
